@@ -1,5 +1,6 @@
 const path = require('path')
 const express = require('express')
+const expressLayouts = require('express-ejs-layouts')
 const mongoose = require('mongoose')
 const dotenv = require('dotenv')
 const morgan = require('morgan')
@@ -31,6 +32,9 @@ app.use(express.json())
 
 // ejs
 app.set('view engine', 'ejs')
+// ejs layouts
+app.use(expressLayouts)
+app.set('layout', './layouts/main')
 
 // sessions (must be above passport middleware)
 app.use(session({

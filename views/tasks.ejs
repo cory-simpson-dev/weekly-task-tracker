@@ -1,23 +1,92 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weekly Tasks</title>
-</head>
-<body>
-    <h1>Tasks</h1>
+<h2>Welcome <%= user.userName %></h2>
 
-    <h2>Welcome <%= user.userName %></h2>
-
-    <form action="/tasks/createTask" method='POST'>
-        <input type="text" placeholder="Enter Task Item" name='taskItem'>
-        <input type="submit">
-    </form>
-
-    <a href="/logout">Logout</a>
-
-    <script src="js/main.js"></script>
-</body>
-</html>
+<div class="container">
+        <div class="row">
+            <div class="col s1 offset-s5"><span>S</span></div>
+            <div class="col s1"><span>M</span></div>
+            <div class="col s1"><span>T</span></div>
+            <div class="col s1"><span>W</span></div>
+            <div class="col s1"><span>Th</span></div>
+            <div class="col s1"><span>F</span></div>
+            <div class="col s1"><span>Sa</span></div>
+        </div>
+    <% if (!tasks) { %>
+        <p>Create your first task to track.</p>
+    <% } %>
+    <% for (let i = 0; i < tasks.length; i++) { %>
+        <div class="row">
+            <!-- task + dropdown trigger -->
+            <div class="col s5"><a href="#" class="dropdown-trigger btn" data-target="dropdown<%- i %>"><%- tasks[i].task %></a>
+                <ul id="dropdown<%- i %>" class="dropdown-content">
+                    <li id="del<%- tasks[i]._id %>"><a class="del" href="#">Delete Task</a></li>
+                </ul>
+            </div>
+            <!-- dropdown structure -->
+            
+            <div id="<%- tasks[i]._id %>" class="col s1"><% if (tasks[i].sundayStatus === 'unassigned') { %>
+                <i class="fa-solid fa-ellipsis sunday"></i>
+            <% } else if (tasks[i].sundayStatus === 'complete') { %>
+                <i class="fa-solid fa-check sunday complete"></i>
+            <% } else if (tasks[i].sundayStatus === 'incomplete') { %>
+                <i class="fa-solid fa-xmark sunday incomplete"></i>
+            <% } %>
+            </div>
+            <div id="<%- tasks[i]._id %>" class="col s1"><% if (tasks[i].mondayStatus === 'unassigned') { %>
+                <i class="fa-solid fa-ellipsis monday"></i>
+            <% } else if (tasks[i].mondayStatus === 'complete') { %>
+                <i class="fa-solid fa-check monday complete"></i>
+            <% } else if (tasks[i].mondayStatus === 'incomplete') { %>
+                <i class="fa-solid fa-xmark monday incomplete"></i>
+            <% } %>
+            </div>
+            <div id="<%- tasks[i]._id %>" class="col s1"><% if (tasks[i].tuesdayStatus === 'unassigned') { %>
+                <i class="fa-solid fa-ellipsis tuesday"></i>
+            <% } else if (tasks[i].tuesdayStatus === 'complete') { %>
+                <i class="fa-solid fa-check tuesday complete"></i>
+            <% } else if (tasks[i].tuesdayStatus === 'incomplete') { %>
+                <i class="fa-solid fa-xmark tuesday incomplete"></i>
+            <% } %>
+            </div>
+            <div id="<%- tasks[i]._id %>" class="col s1"><% if (tasks[i].wednesdayStatus === 'unassigned') { %>
+                <i class="fa-solid fa-ellipsis wednesday"></i>
+            <% } else if (tasks[i].wednesdayStatus === 'complete') { %>
+                <i class="fa-solid fa-check wednesday complete"></i>
+            <% } else if (tasks[i].wednesdayStatus === 'incomplete') { %>
+                <i class="fa-solid fa-xmark wednesday incomplete"></i>
+            <% } %>
+            </div>
+            <div id="<%- tasks[i]._id %>" class="col s1"><% if (tasks[i].thursdayStatus === 'unassigned') { %>
+                <i class="fa-solid fa-ellipsis thursday"></i>
+            <% } else if (tasks[i].thursdayStatus === 'complete') { %>
+                <i class="fa-solid fa-check thursday complete"></i>
+            <% } else if (tasks[i].thursdayStatus === 'incomplete') { %>
+                <i class="fa-solid fa-xmark thursday incomplete"></i>
+            <% } %>
+            </div>
+            <div id="<%- tasks[i]._id %>" class="col s1"><% if (tasks[i].fridayStatus === 'unassigned') { %>
+                <i class="fa-solid fa-ellipsis friday"></i>
+            <% } else if (tasks[i].fridayStatus === 'complete') { %>
+                <i class="fa-solid fa-check friday complete"></i>
+            <% } else if (tasks[i].fridayStatus === 'incomplete') { %>
+                <i class="fa-solid fa-xmark friday incomplete"></i>
+            <% } %>
+            </div>
+            <div id="<%- tasks[i]._id %>" class="col s1"><% if (tasks[i].saturdayStatus === 'unassigned') { %>
+                <i class="fa-solid fa-ellipsis saturday"></i>
+            <% } else if (tasks[i].saturdayStatus === 'complete') { %>
+                <i class="fa-solid fa-check saturday complete"></i>
+            <% } else if (tasks[i].saturdayStatus === 'incomplete') { %>
+                <i class="fa-solid fa-xmark saturday incomplete"></i>
+            <% } %>
+            </div>
+        </div>
+    <% } %>
+        <div class="row">
+            <div class="col s5">
+                <form action="/tasks/createTask" method='POST'>
+                    <input type="text" placeholder="Add new task" name='taskItem'>
+                    <input type="submit">
+                </form>
+            </div>
+        </div>
+</div>

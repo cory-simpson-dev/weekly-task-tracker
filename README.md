@@ -14,6 +14,12 @@ This node.js application primarily utilizes ejs for templating, express for serv
 
 ## Changelog
 
+08/13/2022:
+
+- added error views (404 & 500)
+- added public folder (with css/js)
+- added task display, status updates, task delete
+
 08/11/2022:
 
 - initial build

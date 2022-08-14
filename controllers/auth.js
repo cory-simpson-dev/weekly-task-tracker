@@ -7,7 +7,8 @@ exports.getLogin = (req, res) => {
         return res.redirect('/tasks')
     }
     res.render('login', {
-        title: 'Login'
+        title: 'Login',
+        layout: './layouts/index-login-signup'
     })
 }
   
@@ -57,7 +58,8 @@ exports.getSignup = (req, res) => {
         return res.redirect('/tasks')
     }
     res.render('signup', {
-        title: 'Create Account'
+        title: 'Create Account',
+        layout: './layouts/index-login-signup'
     })
 }
 
