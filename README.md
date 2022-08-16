@@ -14,6 +14,13 @@ This node.js application primarily utilizes ejs for templating, express for serv
 
 ## Changelog
 
+08/15/2022:
+
+- added user settings sidenav
+- added user-preferred task completion icons
+- added footer partial
+- removed fontawesome
+
 08/13/2022:
 
 - added error views (404 & 500)

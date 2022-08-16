@@ -1,4 +1,5 @@
 const Task = require('../models/Task')
+const User = require('../models/User')
 
 module.exports = {
     getTasks: async (req,res)=>{
@@ -10,6 +11,10 @@ module.exports = {
                 user: req.user})
         }catch(err){
             console.log(err)
+            res.render('error/404', {
+                title: 'Page Not Found',
+                layout: './layouts/error'
+            })
         }
     },
     createTask: async (req, res)=>{
@@ -19,10 +24,46 @@ module.exports = {
             res.redirect('/tasks')
         }catch(err){
             console.log(err)
+            res.render('error/500', {
+                title: 'Internal Server Error',
+                layout: './layouts/error'
+            })
+        }
+    },
+    updatePreferredComplete: async (req, res)=>{
+        try{
+            console.log(req.body)
+            await User.findOneAndUpdate({_id: req.user.id},{
+                preferredComplete: req.body.preferredComplete
+            })
+            console.log('New Preferred Complete selected')
+            res.json('New Preferred Complete selected')
+        }catch(err){
+            console.log(err)
+            res.render('error/500', {
+                title: 'Internal Server Error',
+                layout: './layouts/error'
+            })
+        }
+    },
+    updatePreferredIncomplete: async (req, res)=>{
+        try{
+            await User.findOneAndUpdate({_id: req.user.id},{
+                preferredIncomplete: req.body.preferredIncomplete
+            })
+            console.log('New Preferred Incomplete selected')
+            res.json('New Preferred Incomplete selected')
+        }catch(err){
+            console.log(err)
+            res.render('error/500', {
+                title: 'Internal Server Error',
+                layout: './layouts/error'
+            })
         }
     },
     markSundayComplete: async (req, res)=>{
         try{
+            console.log(req)
             await Task.findOneAndUpdate({_id: req.body.taskIdFromJSFile},{
                 sundayStatus: 'complete'
             })
@@ -31,6 +72,10 @@ module.exports = {
             res.json('Marked Complete')
         }catch(err){
             console.log(err)
+            res.render('error/500', {
+                title: 'Internal Server Error',
+                layout: './layouts/error'
+            })
         }
     },
     markSundayIncomplete: async (req, res)=>{
@@ -43,6 +88,10 @@ module.exports = {
             res.json('Marked Incomplete')
         }catch(err){
             console.log(err)
+            res.render('error/500', {
+                title: 'Internal Server Error',
+                layout: './layouts/error'
+            })
         }
     },
     markMondayComplete: async (req, res)=>{
@@ -55,6 +104,10 @@ module.exports = {
             res.json('Marked Complete')
         }catch(err){
             console.log(err)
+            res.render('error/500', {
+                title: 'Internal Server Error',
+                layout: './layouts/error'
+            })
         }
     },
     markMondayIncomplete: async (req, res)=>{
@@ -67,6 +120,10 @@ module.exports = {
             res.json('Marked Incomplete')
         }catch(err){
             console.log(err)
+            res.render('error/500', {
+                title: 'Internal Server Error',
+                layout: './layouts/error'
+            })
         }
     },
     markTuesdayComplete: async (req, res)=>{
@@ -79,6 +136,10 @@ module.exports = {
             res.json('Marked Complete')
         }catch(err){
             console.log(err)
+            res.render('error/500', {
+                title: 'Internal Server Error',
+                layout: './layouts/error'
+            })
         }
     },
     markTuesdayIncomplete: async (req, res)=>{
@@ -91,6 +152,10 @@ module.exports = {
             res.json('Marked Incomplete')
         }catch(err){
             console.log(err)
+            res.render('error/500', {
+                title: 'Internal Server Error',
+                layout: './layouts/error'
+            })
         }
     },
     markWednesdayComplete: async (req, res)=>{
@@ -103,6 +168,10 @@ module.exports = {
             res.json('Marked Complete')
         }catch(err){
             console.log(err)
+            res.render('error/500', {
+                title: 'Internal Server Error',
+                layout: './layouts/error'
+            })
         }
     },
     markWednesdayIncomplete: async (req, res)=>{
@@ -115,6 +184,10 @@ module.exports = {
             res.json('Marked Incomplete')
         }catch(err){
             console.log(err)
+            res.render('error/500', {
+                title: 'Internal Server Error',
+                layout: './layouts/error'
+            })
         }
     },
     markThursdayComplete: async (req, res)=>{
@@ -127,6 +200,10 @@ module.exports = {
             res.json('Marked Complete')
         }catch(err){
             console.log(err)
+            res.render('error/500', {
+                title: 'Internal Server Error',
+                layout: './layouts/error'
+            })
         }
     },
     markThursdayIncomplete: async (req, res)=>{
@@ -139,6 +216,10 @@ module.exports = {
             res.json('Marked Incomplete')
         }catch(err){
             console.log(err)
+            res.render('error/500', {
+                title: 'Internal Server Error',
+                layout: './layouts/error'
+            })
         }
     },
     markFridayComplete: async (req, res)=>{
@@ -151,6 +232,10 @@ module.exports = {
             res.json('Marked Complete')
         }catch(err){
             console.log(err)
+            res.render('error/500', {
+                title: 'Internal Server Error',
+                layout: './layouts/error'
+            })
         }
     },
     markFridayIncomplete: async (req, res)=>{
@@ -163,6 +248,10 @@ module.exports = {
             res.json('Marked Incomplete')
         }catch(err){
             console.log(err)
+            res.render('error/500', {
+                title: 'Internal Server Error',
+                layout: './layouts/error'
+            })
         }
     },
     markSaturdayComplete: async (req, res)=>{
@@ -175,6 +264,10 @@ module.exports = {
             res.json('Marked Complete')
         }catch(err){
             console.log(err)
+            res.render('error/500', {
+                title: 'Internal Server Error',
+                layout: './layouts/error'
+            })
         }
     },
     markSaturdayIncomplete: async (req, res)=>{
@@ -187,6 +280,10 @@ module.exports = {
             res.json('Marked Incomplete')
         }catch(err){
             console.log(err)
+            res.render('error/500', {
+                title: 'Internal Server Error',
+                layout: './layouts/error'
+            })
         }
     },
     deleteTask: async (req, res)=>{
@@ -197,6 +294,10 @@ module.exports = {
             res.json('Deleted It')
         }catch(err){
             console.log(err)
+            res.render('error/500', {
+                title: 'Internal Server Error',
+                layout: './layouts/error'
+            })
         }
     }
 }    

@@ -1,6 +1,153 @@
-<nav class="grey darken-3">
-    <div class="nav-wrapper container">
-        <a href="#!" class="brand-logo center">Task Tracker</a>
-        <a href="/logout">Logout</a>
-    </div>
-</nav>
+    <nav class="grey darken-3">
+        <div class="nav-wrapper container">
+            <a href="#!" class="brand-logo center">Task Tracker</a>
+            <div class="container">
+                <a href="#" data-target="slide-out" class="sidenav-trigger show-on-large"><i class="material-icons">settings</i></a>
+            </div>
+        </div>
+    </nav>
+    
+    <ul id="slide-out" class="sidenav">
+        <li class="settings-title">
+            <span><%= user.userName %>'s Settings</span>
+        </li>
+        <li>
+            <ul class="collapsible">
+                <li>
+                    <div class="collapsible-header">Complete Icon <i class="material-icons">expand_more</i></div>
+                    <div class="collapsible-body">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col s3">
+                                    <% if (user.preferredComplete === 'check') { %>
+                                        <a class="waves-effect waves-light btn"><i id="check" class="material-icons preferred-complete selected">check</i></a>
+                                    <% } else { %>
+                                        <a class="waves-effect waves-light btn"><i  id="check" class="material-icons preferred-complete">check</i></a>
+                                    <% } %>
+                                </div>
+                                <div class="col s3">
+                                    <% if (user.preferredComplete === 'add') { %>
+                                        <a class="waves-effect waves-light btn"><i id="add" class="material-icons preferred-complete selected">add</i></a>
+                                    <% } else { %>
+                                        <a class="waves-effect waves-light btn"><i id="add"  class="material-icons preferred-complete">add</i></a>
+                                    <% } %>
+                                </div>
+                                <div class="col s3">
+                                    <% if (user.preferredComplete === 'whatshot') { %>
+                                        <a class="waves-effect waves-light btn"><i id="whatshot" class="material-icons preferred-complete selected">whatshot</i></a>
+                                    <% } else { %>
+                                        <a class="waves-effect waves-light btn"><i id="whatshot" class="material-icons preferred-complete">whatshot</i></a>
+                                    <% } %>
+                                </div>
+                                <div class="col s3">
+                                    <% if (user.preferredComplete === 'star') { %>
+                                        <a class="waves-effect waves-light btn"><i id="star" class="material-icons preferred-complete selected">star</i></a>
+                                    <% } else { %>
+                                        <a class="waves-effect waves-light btn"><i id="star" class="material-icons preferred-complete">star</i></a>
+                                    <% } %>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col s3">
+                                    <% if (user.preferredComplete === 'favorite') { %>
+                                        <a class="waves-effect waves-light btn"><i id="favorite" class="material-icons preferred-complete selected">favorite</i></a>
+                                    <% } else { %>
+                                        <a class="waves-effect waves-light btn"><i id="favorite" class="material-icons preferred-complete">favorite</i></a>
+                                    <% } %>
+                                </div>
+                                <div class="col s3">
+                                    <% if (user.preferredComplete === 'sentiment_very_satisfied') { %>
+                                        <a class="waves-effect waves-light btn"><i id="sentiment_very_satisfied" class="material-icons preferred-complete selected">sentiment_very_satisfied</i></a>
+                                    <% } else { %>
+                                        <a class="waves-effect waves-light btn"><i id="sentiment_very_satisfied" class="material-icons preferred-complete">sentiment_very_satisfied</i></a>
+                                    <% } %>
+                                </div>
+                                <div class="col s3">
+                                    <% if (user.preferredComplete === 'assignment_turned_in') { %>
+                                        <a class="waves-effect waves-light btn"><i id="assignment_turned_in" class="material-icons preferred-complete selected">assignment_turned_in</i></a>
+                                    <% } else { %>
+                                        <a class="waves-effect waves-light btn"><i id="assignment_turned_in" class="material-icons preferred-complete">assignment_turned_in</i></a>
+                                    <% } %>
+                                </div>
+                                <div class="col s3">
+                                    <% if (user.preferredComplete === 'brightness_1') { %>
+                                        <a class="waves-effect waves-light btn"><i id="brightness_1" class="material-icons preferred-complete selected">brightness_1</i></a>
+                                    <% } else { %>
+                                        <a class="waves-effect waves-light btn"><i id="brightness_1" class="material-icons preferred-complete">brightness_1</i></a>
+                                    <% } %>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="collapsible-header">Incomplete Icon <i class="material-icons">expand_more</i></div>
+                    <div class="collapsible-body">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col s3">
+                                    <% if (user.preferredIncomplete === 'clear') { %>
+                                            <a class="waves-effect waves-light btn"><i id="clear" class="material-icons preferred-incomplete selected">clear</i></a>
+                                    <% } else { %>
+                                            <a class="waves-effect waves-light btn"><i id="clear" class="material-icons preferred-incomplete">clear</i></a>
+                                    <% } %>
+                                </div>
+                                <div class="col s3">
+                                    <% if (user.preferredIncomplete === 'remove') { %>
+                                        <a class="waves-effect waves-light btn"><i id="remove" class="material-icons preferred-incomplete selected">remove</i></a>
+                                    <% } else { %>
+                                        <a class="waves-effect waves-light btn"><i id="remove" class="material-icons preferred-incomplete">remove</i></a>
+                                    <% } %>
+                                </div>
+                                <div class="col s3">
+                                    <% if (user.preferredIncomplete === 'ac_unit') { %>
+                                        <a class="waves-effect waves-light btn"><i id="ac_unit" class="material-icons preferred-incomplete selected">ac_unit</i></a>
+                                    <% } else { %>
+                                        <a class="waves-effect waves-light btn"><i id="ac_unit" class="material-icons preferred-incomplete">ac_unit</i></a>
+                                    <% } %>
+                                </div>
+                                <div class="col s3">
+                                    <% if (user.preferredIncomplete === 'star_border') { %>
+                                        <a class="waves-effect waves-light btn"><i id="star_border" class="material-icons preferred-incomplete selected">star_border</i></a>
+                                    <% } else { %>
+                                        <a class="waves-effect waves-light btn"><i id="star_border" class="material-icons preferred-incomplete">star_border</i></a>
+                                    <% } %>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col s3">
+                                    <% if (user.preferredIncomplete === 'favorite_border') { %>
+                                        <a class="waves-effect waves-light btn"><i id="favorite_border" class="material-icons preferred-incomplete selected">favorite_border</i></a>
+                                    <% } else { %>
+                                        <a class="waves-effect waves-light btn"><i id="favorite_border" class="material-icons preferred-incomplete">favorite_border</i></a>
+                                    <% } %>
+                                </div>
+                                <div class="col s3">
+                                    <% if (user.preferredIncomplete === 'sentiment_very_dissatisfied') { %>
+                                        <a class="waves-effect waves-light btn"><i id="sentiment_very_dissatisfied" class="material-icons preferred-incomplete selected">sentiment_very_dissatisfied</i></a>
+                                    <% } else { %>
+                                        <a class="waves-effect waves-light btn"><i id="sentiment_very_dissatisfied" class="material-icons preferred-incomplete">sentiment_very_dissatisfied</i></a>
+                                    <% } %>
+                                </div>
+                                <div class="col s3">
+                                    <% if (user.preferredIncomplete === 'assignment_late') { %>
+                                        <a class="waves-effect waves-light btn"><i id="assignment_late" class="material-icons preferred-incomplete selected">assignment_late</i></a>
+                                    <% } else { %>
+                                        <a class="waves-effect waves-light btn"><i id="assignment_late" class="material-icons preferred-incomplete">assignment_late</i></a>
+                                    <% } %>
+                                </div>
+                                <div class="col s3">
+                                    <% if (user.preferredIncomplete === 'brightness_low') { %>
+                                        <a  class="waves-effect waves-light btn"><i id="brightness_low" class="material-icons preferred-incomplete selected">brightness_low</i></a>
+                                    <% } else { %>
+                                        <a class="waves-effect waves-light btn"><i id="brightness_low" class="material-icons preferred-incomplete">brightness_low</i></a>
+                                    <% } %>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </li>
+    </ul>
+

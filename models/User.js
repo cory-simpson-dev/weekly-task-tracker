@@ -23,6 +23,14 @@ const UserSchema = new mongoose.Schema({
     date: {
         type: Date,
         default: Date.now
+    },
+    preferredComplete: {
+        type: String,
+        default: 'check'
+    },
+    preferredIncomplete: {
+        type: String,
+        default: 'clear'
     }
 });
 

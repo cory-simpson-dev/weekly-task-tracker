@@ -1,4 +1,6 @@
 const deleteBtn = document.querySelectorAll('.del')
+const updatePreferredCompleteIcon = document.querySelectorAll('.preferred-complete')
+const updatePreferredIncompleteIcon = document.querySelectorAll('.preferred-incomplete')
 const sundayTaskStatus = document.querySelectorAll('.sunday')
 const mondayTaskStatus = document.querySelectorAll('.monday')
 const tuesdayTaskStatus = document.querySelectorAll('.tuesday')
@@ -15,10 +17,27 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.sidenav');
+    var instances = M.Sidenav.init(elems, {
+        inDuration: 300,
+    });
+  });
+
+document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.collapsible');
+    var instances = M.Collapsible.init(elems);
+  });
+
 Array.from(deleteBtn).forEach((el)=>{
     el.addEventListener('click', deleteTask)
 })
-
+Array.from(updatePreferredCompleteIcon).forEach((el)=>{
+    el.addEventListener('click', updatePreferredComplete)
+})
+Array.from(updatePreferredIncompleteIcon).forEach((el)=>{
+    el.addEventListener('click', updatePreferredIncomplete)
+})
 Array.from(sundayTaskStatus).forEach((el)=>{
     el.addEventListener('click', toggleSundayStatus)
 })
@@ -57,6 +76,46 @@ async function deleteTask(){
     }catch(err){
         console.log(err)
     }
+}
+
+async function updatePreferredComplete(){
+    const preferredCompleteInnerText = this.id
+        try{
+            if (!this.classList.contains('selected')) {
+                const response = await fetch('tasks/updatePreferredComplete', {
+                    method: 'put',
+                    headers: {'Content-type': 'application/json'},
+                    body: JSON.stringify({
+                        'preferredComplete': preferredCompleteInnerText
+                    })
+                })
+                const data = await response.json()
+                console.log(data)
+                location.reload()
+            } 
+        }catch(err){
+            console.log(err)
+        }
+}
+
+async function updatePreferredIncomplete(){
+    const preferredIncompleteInnerText = this.id
+        try{
+            if (!this.classList.contains('selected')) {
+                const response = await fetch('tasks/updatePreferredIncomplete', {
+                    method: 'put',
+                    headers: {'Content-type': 'application/json'},
+                    body: JSON.stringify({
+                        'preferredIncomplete': preferredIncompleteInnerText
+                    })
+                })
+                const data = await response.json()
+                console.log(data)
+                location.reload()
+            }
+        }catch(err){
+            console.log(err)
+        }
 }
 
 async function toggleSundayStatus(){
