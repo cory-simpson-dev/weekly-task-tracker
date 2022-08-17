@@ -1,13 +1,16 @@
     <nav class="grey darken-3">
         <div class="nav-wrapper container">
-            <a href="#!" class="brand-logo center">Task Tracker</a>
             <div class="container">
                 <a href="#" data-target="slide-out" class="sidenav-trigger show-on-large"><i class="material-icons">settings</i></a>
             </div>
+            <a href="#!" class="brand-logo center">Task Tracker</a>
         </div>
     </nav>
     
     <ul id="slide-out" class="sidenav">
+        <li>
+            <a href="/logout" class="waves-effect waves-light btn red">Sign Out</a>
+        </li>
         <li class="settings-title">
             <span><%= user.userName %>'s Settings</span>
         </li>

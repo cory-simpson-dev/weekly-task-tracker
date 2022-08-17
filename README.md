@@ -14,6 +14,12 @@ This node.js application primarily utilizes ejs for templating, express for serv
 
 ## Changelog
 
+08/16/2022:
+
+- added logout feature
+- added login and signup styles
+- removed index route & controller
+
 08/15/2022:
 
 - added user settings sidenav

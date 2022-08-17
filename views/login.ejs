@@ -1,19 +1,33 @@
 <main>
-    <div class="container">
-        <% if (locals.messages.errors) { %>
-            <% messages.errors.forEach( el => { %>
-                <div class="alert alert-danger"><%= el.msg %></div>
-            <% }) %>    
-        <% } %>
-        <% if (locals.messages.info) { %>
-            <% messages.info.forEach( el => { %>
-                <div class="alert alert-danger"><%= el.msg %></div>
-            <% }) %>    
-        <% } %>
-        <form action="/login" method="POST">
-            <input type="email" name="email" placeholder="Email">
-            <input type="password" name="password" placeholder="Password">
-            <input type="submit">
-        </form>
+    <div class="container center">
+        <div class="container width-300">
+            <div class="row">
+                <h1 class="smaller-h1">Weekly Tracker</h1>
+            </div>
+            <% if (locals.messages.errors) { %>
+                <% messages.errors.forEach( el => { %>
+                    <div class="alert alert-danger"><%= el.msg %></div>
+                <% }) %>    
+            <% } %>
+            <% if (locals.messages.info) { %>
+                <% messages.info.forEach( el => { %>
+                    <div class="alert alert-danger"><%= el.msg %></div>
+                <% }) %>    
+            <% } %>
+            <form action="/" method="POST">
+                <div class="row">
+                    <input type="email" name="email" placeholder="Email">
+                </div>
+                <div class="row">
+                    <input type="password" name="password" placeholder="Password">
+                </div>
+                <div class="row">
+                    <input class="waves-effect waves-light btn width-100" type="submit" value="Log In">
+                </div>
+            </form>
+            <div class="row">
+                <a href="/signup" class="waves-effect waves-light btn width-100">No account? Register here!</a>
+            </div>
+        </div>
     </div>
 </main>
