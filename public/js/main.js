@@ -1,4 +1,5 @@
 const deleteBtn = document.querySelectorAll('.del')
+const addFavoriteTaskBtn = document.querySelectorAll('.add')
 const updatePreferredCompleteIcon = document.querySelectorAll('.preferred-complete')
 const updatePreferredIncompleteIcon = document.querySelectorAll('.preferred-incomplete')
 const sundayTaskStatus = document.querySelectorAll('.sunday')
@@ -31,6 +32,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
 Array.from(deleteBtn).forEach((el)=>{
     el.addEventListener('click', deleteTask)
+})
+Array.from(addFavoriteTaskBtn).forEach((el)=>{
+    el.addEventListener('click', addFavoriteTask)
 })
 Array.from(updatePreferredCompleteIcon).forEach((el)=>{
     el.addEventListener('click', updatePreferredComplete)
@@ -76,6 +80,26 @@ async function deleteTask(){
     }catch(err){
         console.log(err)
     }
+}
+
+async function addFavoriteTask(){
+    const taskName = this.parentNode.id.split('-').join(' ')
+        try{
+            if (!this.classList.contains('favorited')) {
+                const response = await fetch('tasks/addFavoriteTask', {
+                    method: 'put',
+                    headers: {'Content-type': 'application/json'},
+                    body: JSON.stringify({
+                        'favoritedTask': taskName
+                    })
+                })
+                const data = await response.json()
+                console.log(data)
+                location.reload()
+            } 
+        }catch(err){
+            console.log(err)
+        }
 }
 
 async function updatePreferredComplete(){

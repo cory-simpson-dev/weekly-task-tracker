@@ -31,7 +31,10 @@ const UserSchema = new mongoose.Schema({
     preferredIncomplete: {
         type: String,
         default: 'clear'
-    }
+    },
+    favoriteTasks: [{
+        type: String
+    }]
 });
 
 // Password hash middleware.

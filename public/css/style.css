@@ -8,6 +8,10 @@ main {
     flex: 1 0 auto;
 }
 
+#welcome {
+    margin: 36px 0;
+}
+
 .settings-title {
     width: 100%;
     text-align: center;
@@ -42,4 +46,12 @@ i.selected {
 
 .width-300 {
     width: 300px;
+}
+
+#footer {
+    padding: 0;
+}
+
+.favorited {
+    color: black !important;
 }

@@ -30,9 +30,26 @@ module.exports = {
             })
         }
     },
+    addFavoriteTask: async (req, res)=>{
+        try{
+            const userCurr = await User.find({_id: req.user.id})
+            // .push doesn't work
+            // const userFavorites = userCurr.favoriteTasks.push(req.body.favoritedTask)
+            await User.findOneAndUpdate({_id: req.user.id},{
+                favoriteTasks: req.body.favoritedTask
+            })
+            console.log('New favorite has been saved')
+            res.json('New favorite has been saved')
+        }catch(err){
+            console.log(err)
+            res.render('error/500', {
+                title: 'Internal Server Error',
+                layout: './layouts/error'
+            })
+        }
+    },
     updatePreferredComplete: async (req, res)=>{
         try{
-            console.log(req.body)
             await User.findOneAndUpdate({_id: req.user.id},{
                 preferredComplete: req.body.preferredComplete
             })

@@ -14,6 +14,11 @@ This node.js application primarily utilizes ejs for templating, express for serv
 
 ## Changelog
 
+08/17/2022:
+
+- added footer styles
+- added favorite tasks
+
 08/16/2022:
 
 - added logout feature

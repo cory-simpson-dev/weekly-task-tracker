@@ -1,7 +1,7 @@
 <main>
     <div class="container">
         <div class="container center">
-            <h2>Welcome <%= user.userName %></h2>
+            <h2 id="welcome">Welcome <%= user.userName %></h2>
         </div>
         <div class="container">
                 <div class="row">
@@ -13,17 +13,24 @@
                     <div class="col s1 center"><span>F</span></div>
                     <div class="col s1 center"><span>Sa</span></div>
                 </div>
-            <% if (!tasks) { %>
+            <% if (tasks.length < 1) { %>
                 <p>Create your first task to track.</p>
             <% } %>
             <% for (let i = 0; i < tasks.length; i++) { %>
+                <% let taskName = tasks[i].task %>
+                <% let taskNameHyphenate = tasks[i].task.split(' ').join('-') %>
                 <div class="row">
                     <!-- task + dropdown trigger -->
-                    <div class="col s5"><a href="#" class="dropdown-trigger btn" data-target="dropdown<%- i %>"><%- tasks[i].task %></a>
+                    <div class="col s5"><a href="#" class="dropdown-trigger btn" data-target="dropdown<%- i %>"><%- taskName %></a>
                         <ul id="dropdown<%- i %>" class="dropdown-content">
-                            <li id="add<%- tasks[i]._id %>"><a href="#" class="add">Add to favorites</a></li>
-                            <li id="res<%- tasks[i]._id %>"><a href="#" class="res">Reset completion</a></li>
-                            <li id="del<%- tasks[i]._id %>"><a class="del" href="#">Delete Task</a></li>
+                            <!-- if task is included in user.favoriteTasks, add class favorited -->
+                            <% if (user.favoriteTasks.includes(taskName)) { %>
+                                <li id="<%- taskNameHyphenate %>"><a class="add favorited" href="#">Favorite</a></li>
+                            <% } else { %>
+                                <li id="<%- taskNameHyphenate %>"><a class="add" href="#">Favorite</a></li>
+                            <% } %>
+                            <li id="res<%- tasks[i]._id %>"><a class="res" href="#">Reset</a></li>
+                            <li id="del<%- tasks[i]._id %>"><a class="del" href="#">Delete</a></li>
                         </ul>
                     </div>
                     <!-- dropdown structure -->

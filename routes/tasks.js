@@ -6,6 +6,7 @@ const { ensureAuth, ensureGuest } = require('../middleware/auth')
 router.get('/', ensureAuth, tasksController.getTasks)
 
 router.post('/createTask', tasksController.createTask)
+router.put('/addFavoriteTask', tasksController.addFavoriteTask)
 router.put('/updatePreferredComplete', tasksController.updatePreferredComplete)
 router.put('/updatePreferredIncomplete', tasksController.updatePreferredIncomplete)
 router.put('/markSundayComplete', tasksController.markSundayComplete)
