@@ -2,17 +2,24 @@
 
 Full-stack web application with user login for tracking daily completion of tasks in a week.
 
+## Features
+
+Within this weekly task tracker, you can create an account, create tasks you'd like to track, customize your account settings, save favorite tasks, and, of course, logout. 
+
 ## Packages
 
 This node.js application primarily utilizes ejs for templating, express for server framework, mongoDB and mongoose for database storage, passport-local for accounts and authentication, bcrypt for password encryption, materialize as a css framework, and several others for other details (listed in package.json).
 
 ## Current Objectives
 
-- add styles to existing templates
-- add functionality to tasks.ejs
-- add google oauth-2.0 for google sign-in (in addition to local)
+- improve UX/UI
 
 ## Changelog
+
+08/18/2022:
+
+- added reset features
+- add task creation from favorites
 
 08/17/2022:
 

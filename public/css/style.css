@@ -32,6 +32,11 @@ i.selected {
     padding: 0 16px
 }
 
+.create,
+.remove {
+    padding: 0 16px;
+}
+
 .no-padding {
     padding: 0;
 }
@@ -42,6 +47,10 @@ i.selected {
 
 .width-100 {
     width: 100%;
+}
+
+.width-90 {
+    width: 90%;
 }
 
 .width-300 {
@@ -55,3 +64,4 @@ i.selected {
 .favorited {
     color: black !important;
 }
+

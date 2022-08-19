@@ -18,7 +18,7 @@
             <% } %>
             <% for (let i = 0; i < tasks.length; i++) { %>
                 <% let taskName = tasks[i].task %>
-                <% let taskNameHyphenate = tasks[i].task.split(' ').join('-') %>
+                <% let taskNameHyphenate = taskName.split(' ').join('-') %>
                 <div class="row">
                     <!-- task + dropdown trigger -->
                     <div class="col s5"><a href="#" class="dropdown-trigger btn" data-target="dropdown<%- i %>"><%- taskName %></a>

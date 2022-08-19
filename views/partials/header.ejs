@@ -9,7 +9,7 @@
     
     <ul id="slide-out" class="sidenav">
         <li>
-            <a href="/logout" class="waves-effect waves-light btn red">Sign Out</a>
+            <a id="reset-all" href="#" class="waves-effect waves-light btn">Reset Week</a>
         </li>
         <li class="settings-title">
             <span><%= user.userName %>'s Settings</span>
@@ -20,7 +20,7 @@
                     <div class="collapsible-header">Complete Icon <i class="material-icons">expand_more</i></div>
                     <div class="collapsible-body">
                         <div class="container">
-                            <div class="row">
+                            <div class="row no-margin">
                                 <div class="col s3">
                                     <% if (user.preferredComplete === 'check') { %>
                                         <a class="waves-effect waves-light btn"><i id="check" class="material-icons preferred-complete selected">check</i></a>
@@ -50,7 +50,7 @@
                                     <% } %>
                                 </div>
                             </div>
-                            <div class="row">
+                            <div class="row no-margin">
                                 <div class="col s3">
                                     <% if (user.preferredComplete === 'favorite') { %>
                                         <a class="waves-effect waves-light btn"><i id="favorite" class="material-icons preferred-complete selected">favorite</i></a>
@@ -87,7 +87,7 @@
                     <div class="collapsible-header">Incomplete Icon <i class="material-icons">expand_more</i></div>
                     <div class="collapsible-body">
                         <div class="container">
-                            <div class="row">
+                            <div class="row no-margin">
                                 <div class="col s3">
                                     <% if (user.preferredIncomplete === 'clear') { %>
                                             <a class="waves-effect waves-light btn"><i id="clear" class="material-icons preferred-incomplete selected">clear</i></a>
@@ -117,7 +117,7 @@
                                     <% } %>
                                 </div>
                             </div>
-                            <div class="row">
+                            <div class="row no-margin">
                                 <div class="col s3">
                                     <% if (user.preferredIncomplete === 'favorite_border') { %>
                                         <a class="waves-effect waves-light btn"><i id="favorite_border" class="material-icons preferred-incomplete selected">favorite_border</i></a>
@@ -153,16 +153,29 @@
                 <li>
                     <div class="collapsible-header">Favorites <i class="material-icons">expand_more</i></div>
                     <div class="collapsible-body">
-                        <div class="container">
+                        <div class="container width-90">
                             <% for (let i = 0; i < user.favoriteTasks.length; i++) { %>
-                                <div class="row">
-                                    <span><%- user.favoriteTasks[i] %></span>
+                                <% let favoritedTaskName = user.favoriteTasks[i] %>
+                                <% let favoritedTaskNameHyphenate = favoritedTaskName.split(' ').join('-') %>
+                                <div class="row no-margin">
+                                    <div class="col s8">
+                                        <%- favoritedTaskName %>
+                                    </div>
+                                    <div class="col s2">
+                                        <a class="waves-effect waves-light btn no-padding"><i id="create<%- favoritedTaskNameHyphenate %>" class="material-icons create">add</i></a>
+                                    </div>
+                                    <div class="col s2">
+                                        <a class="waves-effect waves-light btn no-padding"><i id='remove<%- favoritedTaskNameHyphenate %>'class="material-icons remove">delete</i></a>
+                                    </div>
                                     <!-- create task button -->
                                     <!-- remove from favorites -->
                                 </div>
                             <% } %>
                         </div>
                     </div>
+                </li>
+                <li>
+                    <a href="/logout" class="waves-effect waves-light btn grey darken-3">Sign Out</a>
                 </li>
             </ul>
         </li>

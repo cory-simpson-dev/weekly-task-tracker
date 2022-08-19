@@ -1,5 +1,9 @@
 const deleteBtn = document.querySelectorAll('.del')
 const addFavoriteTaskBtn = document.querySelectorAll('.add')
+const createFavoriteTaskBtn = document.querySelectorAll('.create')
+const removeFavoriteTaskBtn = document.querySelectorAll('.remove')
+const resetTaskStatusBtn = document.querySelectorAll('.res')
+const resetTaskStatusAllBtn = document.querySelector('#reset-all')
 const updatePreferredCompleteIcon = document.querySelectorAll('.preferred-complete')
 const updatePreferredIncompleteIcon = document.querySelectorAll('.preferred-incomplete')
 const sundayTaskStatus = document.querySelectorAll('.sunday')
@@ -30,11 +34,22 @@ document.addEventListener('DOMContentLoaded', function() {
     var instances = M.Collapsible.init(elems);
   });
 
+resetTaskStatusAllBtn.addEventListener('click', resetTaskStatusAll)
+
 Array.from(deleteBtn).forEach((el)=>{
     el.addEventListener('click', deleteTask)
 })
 Array.from(addFavoriteTaskBtn).forEach((el)=>{
     el.addEventListener('click', addFavoriteTask)
+})
+Array.from(createFavoriteTaskBtn).forEach((el)=>{
+    el.addEventListener('click', createFavoriteTask)
+})
+Array.from(removeFavoriteTaskBtn).forEach((el)=>{
+    el.addEventListener('click', removeFavoriteTask)
+})
+Array.from(resetTaskStatusBtn).forEach((el)=>{
+    el.addEventListener('click', resetTaskStatus)
 })
 Array.from(updatePreferredCompleteIcon).forEach((el)=>{
     el.addEventListener('click', updatePreferredComplete)
@@ -102,6 +117,42 @@ async function addFavoriteTask(){
         }
 }
 
+async function createFavoriteTask(){
+    const taskName = this.id.slice(6).split('-').join(' ')
+        try{
+            const response = await fetch('tasks/createTaskFromFavorite', {
+                method: 'post',
+                headers: {'Content-type': 'application/json'},
+                body: JSON.stringify({
+                    'taskItem': taskName
+                })
+            })
+            const data = await response.json()
+            console.log(data)
+            location.reload()
+        } catch(err){
+            console.log(err)
+        }
+}
+
+async function removeFavoriteTask(){
+    const taskName = this.id.slice(6).split('-').join(' ')
+        try{
+            const response = await fetch('tasks/removeFavoriteTask', {
+                method: 'put',
+                headers: {'Content-type': 'application/json'},
+                body: JSON.stringify({
+                    'favoritedTask': taskName
+                })
+            })
+            const data = await response.json()
+            console.log(data)
+            location.reload()
+        }catch(err){
+            console.log(err)
+        }
+}
+
 async function updatePreferredComplete(){
     const preferredCompleteInnerText = this.id
         try{
@@ -138,6 +189,38 @@ async function updatePreferredIncomplete(){
                 location.reload()
             }
         }catch(err){
+            console.log(err)
+        }
+}
+
+async function resetTaskStatus(){
+    const taskId = this.parentNode.id.slice(3)
+        try{
+            const response = await fetch('tasks/resetTaskStatus', {
+                method: 'put',
+                headers: {'Content-type': 'application/json'},
+                body: JSON.stringify({
+                    'taskIdFromJSFile': taskId
+                })
+            })
+            const data = await response.json()
+            console.log(data)
+            location.reload()
+        } catch(err){
+            console.log(err)
+        }
+}
+
+async function resetTaskStatusAll(){
+        try{
+            const response = await fetch('tasks/resetTaskStatusAll', {
+                method: 'put',
+                headers: {'Content-type': 'application/json'}
+            })
+            const data = await response.json()
+            console.log(data)
+            location.reload()
+        } catch(err){
             console.log(err)
         }
 }
