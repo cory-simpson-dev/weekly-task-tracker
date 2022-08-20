@@ -19,7 +19,7 @@
             <% for (let i = 0; i < tasks.length; i++) { %>
                 <% let taskName = tasks[i].task %>
                 <% let taskNameHyphenate = taskName.split(' ').join('-') %>
-                <div class="row">
+                <div id="row<%- tasks[i]._id %>" class="row">
                     <!-- task + dropdown trigger -->
                     <div class="col s5"><a href="#" class="dropdown-trigger btn" data-target="dropdown<%- i %>"><%- taskName %></a>
                         <ul id="dropdown<%- i %>" class="dropdown-content">
@@ -35,7 +35,7 @@
                     </div>
                     <!-- dropdown structure -->
                     
-                    <div id="<%- tasks[i]._id %>" class="col s1 center"><% if (tasks[i].sundayStatus === 'unassigned') { %>
+                    <div id="<%- tasks[i]._id %>" class="col s1 center no-padding"><% if (tasks[i].sundayStatus === 'unassigned') { %>
                         <i class="tiny material-icons sunday">remove</i>
                     <% } else if (tasks[i].sundayStatus === 'complete') { %>
                         <i class="tiny material-icons sunday complete"><%= user.preferredComplete %></i>
@@ -43,7 +43,7 @@
                         <i class="tiny material-icons sunday incomplete"><%= user.preferredIncomplete %></i>
                     <% } %>
                     </div>
-                    <div id="<%- tasks[i]._id %>" class="col s1 center"><% if (tasks[i].mondayStatus === 'unassigned') { %>
+                    <div id="<%- tasks[i]._id %>" class="col s1 center no-padding"><% if (tasks[i].mondayStatus === 'unassigned') { %>
                         <i class="tiny material-icons monday">remove</i>
                     <% } else if (tasks[i].mondayStatus === 'complete') { %>
                         <i class="tiny material-icons monday complete"><%= user.preferredComplete %></i>
@@ -51,7 +51,7 @@
                         <i class="tiny material-icons monday incomplete"><%= user.preferredIncomplete %></i>
                     <% } %>
                     </div>
-                    <div id="<%- tasks[i]._id %>" class="col s1 center"><% if (tasks[i].tuesdayStatus === 'unassigned') { %>
+                    <div id="<%- tasks[i]._id %>" class="col s1 center no-padding"><% if (tasks[i].tuesdayStatus === 'unassigned') { %>
                         <i class="tiny material-icons tuesday">remove</i>
                     <% } else if (tasks[i].tuesdayStatus === 'complete') { %>
                         <i class="tiny material-icons tuesday complete"><%= user.preferredComplete %></i>
@@ -59,7 +59,7 @@
                         <i class="tiny material-icons tuesday incomplete"><%= user.preferredIncomplete %></i>
                     <% } %>
                     </div>
-                    <div id="<%- tasks[i]._id %>" class="col s1 center"><% if (tasks[i].wednesdayStatus === 'unassigned') { %>
+                    <div id="<%- tasks[i]._id %>" class="col s1 center no-padding"><% if (tasks[i].wednesdayStatus === 'unassigned') { %>
                         <i class="tiny material-icons wednesday">remove</i>
                     <% } else if (tasks[i].wednesdayStatus === 'complete') { %>
                         <i class="tiny material-icons wednesday complete"><%= user.preferredComplete %></i>
@@ -67,7 +67,7 @@
                         <i class="tiny material-icons wednesday incomplete"><%= user.preferredIncomplete %></i>
                     <% } %>
                     </div>
-                    <div id="<%- tasks[i]._id %>" class="col s1 center"><% if (tasks[i].thursdayStatus === 'unassigned') { %>
+                    <div id="<%- tasks[i]._id %>" class="col s1 center no-padding"><% if (tasks[i].thursdayStatus === 'unassigned') { %>
                         <i class="tiny material-icons thursday">remove</i>
                     <% } else if (tasks[i].thursdayStatus === 'complete') { %>
                         <i class="tiny material-icons thursday complete"><%= user.preferredComplete %></i>
@@ -75,7 +75,7 @@
                         <i class="tiny material-icons thursday incomplete"><%= user.preferredIncomplete %></i>
                     <% } %>
                     </div>
-                    <div id="<%- tasks[i]._id %>" class="col s1 center"><% if (tasks[i].fridayStatus === 'unassigned') { %>
+                    <div id="<%- tasks[i]._id %>" class="col s1 center no-padding"><% if (tasks[i].fridayStatus === 'unassigned') { %>
                         <i class="tiny material-icons friday">remove</i>
                     <% } else if (tasks[i].fridayStatus === 'complete') { %>
                         <i class="tiny material-icons friday complete"><%= user.preferredComplete %></i>
@@ -83,7 +83,7 @@
                         <i class="tiny material-icons friday incomplete"><%= user.preferredIncomplete %></i>
                     <% } %>
                     </div>
-                    <div id="<%- tasks[i]._id %>" class="col s1 center"><% if (tasks[i].saturdayStatus === 'unassigned') { %>
+                    <div id="<%- tasks[i]._id %>" class="col s1 center no-padding"><% if (tasks[i].saturdayStatus === 'unassigned') { %>
                         <i class="tiny material-icons saturday">remove</i>
                     <% } else if (tasks[i].saturdayStatus === 'complete') { %>
                         <i class="tiny material-icons saturday complete"><%= user.preferredComplete %></i>

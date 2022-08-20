@@ -16,6 +16,13 @@ This node.js application primarily utilizes ejs for templating, express for serv
 
 ## Changelog
 
+08/19/2022:
+
+- site launch via heroku
+- improved delete UX
+- improved preferred icons UX
+- improved status update UX
+
 08/18/2022:
 
 - added reset features

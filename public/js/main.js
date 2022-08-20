@@ -89,9 +89,10 @@ async function deleteTask(){
                 'taskIdFromJSFile': taskId
             })
         })
+        document.getElementById(`row${taskId}`).style.display = "none"
         const data = await response.json()
         console.log(data)
-        location.reload()
+        // location.reload()
     }catch(err){
         console.log(err)
     }
@@ -147,7 +148,7 @@ async function removeFavoriteTask(){
             })
             const data = await response.json()
             console.log(data)
-            location.reload()
+            // location.reload()
         }catch(err){
             console.log(err)
         }
@@ -155,6 +156,15 @@ async function removeFavoriteTask(){
 
 async function updatePreferredComplete(){
     const preferredCompleteInnerText = this.id
+    const updatePreferredCompleteLocal = document.querySelectorAll('.complete')
+    const allPreferredCompletes = document.querySelectorAll('.preferred-complete')
+    Array.from(updatePreferredCompleteLocal).forEach((el)=>{
+        el.innerHTML = `${preferredCompleteInnerText}`
+    })
+    Array.from(allPreferredCompletes).forEach((el)=>{
+        el.style.color = 'white'
+    })
+    this.style.color = 'black'
         try{
             if (!this.classList.contains('selected')) {
                 const response = await fetch('tasks/updatePreferredComplete', {
@@ -164,9 +174,10 @@ async function updatePreferredComplete(){
                         'preferredComplete': preferredCompleteInnerText
                     })
                 })
+                // select all .complete and change inner text to this.id preferredCompleteInnerTextFixed
                 const data = await response.json()
                 console.log(data)
-                location.reload()
+                // location.reload()
             } 
         }catch(err){
             console.log(err)
@@ -175,6 +186,15 @@ async function updatePreferredComplete(){
 
 async function updatePreferredIncomplete(){
     const preferredIncompleteInnerText = this.id
+    const updatePreferredIncompleteLocal = document.querySelectorAll('.incomplete')
+    const allPreferredIncompletes = document.querySelectorAll('.preferred-incomplete')
+    Array.from(updatePreferredIncompleteLocal).forEach((el)=>{
+        el.innerHTML = `${preferredIncompleteInnerText}`
+    })
+    Array.from(allPreferredIncompletes).forEach((el)=>{
+        el.style.color = 'white'
+    })
+    this.style.color = 'black'
         try{
             if (!this.classList.contains('selected')) {
                 const response = await fetch('tasks/updatePreferredIncomplete', {
@@ -186,7 +206,7 @@ async function updatePreferredIncomplete(){
                 })
                 const data = await response.json()
                 console.log(data)
-                location.reload()
+                // location.reload()
             }
         }catch(err){
             console.log(err)
@@ -236,9 +256,12 @@ async function toggleSundayStatus(){
                         'taskIdFromJSFile': taskId
                     })
                 })
+                this.classList.remove('complete')
+                this.classList.add('incomplete')
+                this.innerText = `${userPreferredIncompleteIcon}`
                 const data = await response.json()
                 console.log(data)
-                location.reload()
+                // location.reload()
             } else {
                 const response = await fetch('tasks/markSundayComplete', {
                     method: 'put',
@@ -247,9 +270,13 @@ async function toggleSundayStatus(){
                         'taskIdFromJSFile': taskId
                     })
                 })
+                this.classList.remove('incomplete')
+                this.classList.add('complete')
+                // global variable declared in main.ejs
+                this.innerText = `${userPreferredCompleteIcon}`
                 const data = await response.json()
                 console.log(data)
-                location.reload()
+                // location.reload()
             }
         }catch(err){
             console.log(err)
@@ -267,9 +294,11 @@ async function toggleMondayStatus(){
                         'taskIdFromJSFile': taskId
                     })
                 })
+                this.classList.remove('complete')
+                this.classList.add('incomplete')
+                this.innerText = `${userPreferredIncompleteIcon}`
                 const data = await response.json()
                 console.log(data)
-                location.reload()
             } else {
                 const response = await fetch('tasks/markMondayComplete', {
                     method: 'put',
@@ -278,9 +307,11 @@ async function toggleMondayStatus(){
                         'taskIdFromJSFile': taskId
                     })
                 })
+                this.classList.remove('incomplete')
+                this.classList.add('complete')
+                this.innerText = `${userPreferredCompleteIcon}`
                 const data = await response.json()
                 console.log(data)
-                location.reload()
             }
         }catch(err){
             console.log(err)
@@ -298,9 +329,11 @@ async function toggleTuesdayStatus(){
                         'taskIdFromJSFile': taskId
                     })
                 })
+                this.classList.remove('complete')
+                this.classList.add('incomplete')
+                this.innerText = `${userPreferredIncompleteIcon}`
                 const data = await response.json()
                 console.log(data)
-                location.reload()
             } else {
                 const response = await fetch('tasks/markTuesdayComplete', {
                     method: 'put',
@@ -309,9 +342,11 @@ async function toggleTuesdayStatus(){
                         'taskIdFromJSFile': taskId
                     })
                 })
+                this.classList.remove('incomplete')
+                this.classList.add('complete')
+                this.innerText = `${userPreferredCompleteIcon}`
                 const data = await response.json()
                 console.log(data)
-                location.reload()
             }
         }catch(err){
             console.log(err)
@@ -329,9 +364,11 @@ async function toggleWednesdayStatus(){
                         'taskIdFromJSFile': taskId
                     })
                 })
+                this.classList.remove('complete')
+                this.classList.add('incomplete')
+                this.innerText = `${userPreferredIncompleteIcon}`
                 const data = await response.json()
                 console.log(data)
-                location.reload()
             } else {
                 const response = await fetch('tasks/markWednesdayComplete', {
                     method: 'put',
@@ -340,9 +377,11 @@ async function toggleWednesdayStatus(){
                         'taskIdFromJSFile': taskId
                     })
                 })
+                this.classList.remove('incomplete')
+                this.classList.add('complete')
+                this.innerText = `${userPreferredCompleteIcon}`
                 const data = await response.json()
                 console.log(data)
-                location.reload()
             }
         }catch(err){
             console.log(err)
@@ -360,9 +399,11 @@ async function toggleThursdayStatus(){
                         'taskIdFromJSFile': taskId
                     })
                 })
+                this.classList.remove('complete')
+                this.classList.add('incomplete')
+                this.innerText = `${userPreferredIncompleteIcon}`
                 const data = await response.json()
                 console.log(data)
-                location.reload()
             } else {
                 const response = await fetch('tasks/markThursdayComplete', {
                     method: 'put',
@@ -371,9 +412,11 @@ async function toggleThursdayStatus(){
                         'taskIdFromJSFile': taskId
                     })
                 })
+                this.classList.remove('incomplete')
+                this.classList.add('complete')
+                this.innerText = `${userPreferredCompleteIcon}`
                 const data = await response.json()
                 console.log(data)
-                location.reload()
             }
         }catch(err){
             console.log(err)
@@ -391,9 +434,11 @@ async function toggleFridayStatus(){
                         'taskIdFromJSFile': taskId
                     })
                 })
+                this.classList.remove('complete')
+                this.classList.add('incomplete')
+                this.innerText = `${userPreferredIncompleteIcon}`
                 const data = await response.json()
                 console.log(data)
-                location.reload()
             } else {
                 const response = await fetch('tasks/markFridayComplete', {
                     method: 'put',
@@ -402,9 +447,11 @@ async function toggleFridayStatus(){
                         'taskIdFromJSFile': taskId
                     })
                 })
+                this.classList.remove('incomplete')
+                this.classList.add('complete')
+                this.innerText = `${userPreferredCompleteIcon}`
                 const data = await response.json()
                 console.log(data)
-                location.reload()
             }
         }catch(err){
             console.log(err)
@@ -422,9 +469,11 @@ async function toggleSaturdayStatus(){
                         'taskIdFromJSFile': taskId
                     })
                 })
+                this.classList.remove('complete')
+                this.classList.add('incomplete')
+                this.innerText = `${userPreferredIncompleteIcon}`
                 const data = await response.json()
                 console.log(data)
-                location.reload()
             } else {
                 const response = await fetch('tasks/markSaturdayComplete', {
                     method: 'put',
@@ -433,9 +482,11 @@ async function toggleSaturdayStatus(){
                         'taskIdFromJSFile': taskId
                     })
                 })
+                this.classList.remove('incomplete')
+                this.classList.add('complete')
+                this.innerText = `${userPreferredCompleteIcon}`
                 const data = await response.json()
                 console.log(data)
-                location.reload()
             }
         }catch(err){
             console.log(err)
