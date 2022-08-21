@@ -153,11 +153,11 @@
                 <li>
                     <div class="collapsible-header">Favorites <i class="material-icons">expand_more</i></div>
                     <div class="collapsible-body">
-                        <div class="container width-90">
+                        <div id="favorites" class="container width-90">
                             <% for (let i = 0; i < user.favoriteTasks.length; i++) { %>
                                 <% let favoritedTaskName = user.favoriteTasks[i] %>
                                 <% let favoritedTaskNameHyphenate = favoritedTaskName.split(' ').join('-') %>
-                                <div class="row no-margin">
+                                <div id="row<%- favoritedTaskNameHyphenate %>" class="row no-margin">
                                     <div class="col s8">
                                         <%- favoritedTaskName %>
                                     </div>

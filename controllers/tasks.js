@@ -32,9 +32,11 @@ module.exports = {
     },
     createTaskFromFavorite: async (req, res)=>{
         try{
-            await Task.create({task: req.body.taskItem, userId: req.user.id})
+            let newTask = await Task.create({task: req.body.taskItem, userId: req.user.id})
             console.log('Favorite task has been added!')
-            res.json('Favorite task has been added!')
+            return res.json({
+                id: `${newTask._id}`
+            })
         }catch(err){
             console.log(err)
             res.render('error/500', {

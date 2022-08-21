@@ -14,9 +14,13 @@ This node.js application primarily utilizes ejs for templating, express for serv
 
 ## Current Objectives
 
-- improve UX/UI
+- improve task creation UX
 
 ## Changelog
+
+08/21/2022:
+
+- improved favorites UX
 
 08/20/2022:
 
