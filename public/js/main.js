@@ -215,6 +215,7 @@ async function updatePreferredIncomplete(){
 
 async function resetTaskStatus(){
     const taskId = this.parentNode.id.slice(3)
+    // const allStatus = document.querySelectorAll(`i.${taskId}`)
         try{
             const response = await fetch('tasks/resetTaskStatus', {
                 method: 'put',
@@ -225,13 +226,19 @@ async function resetTaskStatus(){
             })
             const data = await response.json()
             console.log(data)
-            location.reload()
+            // location.reload()
         } catch(err){
             console.log(err)
         }
 }
 
 async function resetTaskStatusAll(){
+    const allStatus = document.querySelectorAll('.status')
+    Array.from(allStatus).forEach((el)=>{
+        el.innerHTML = `remove`
+        el.classList.remove('complete')
+        el.classList.remove('incomplete')
+    })
         try{
             const response = await fetch('tasks/resetTaskStatusAll', {
                 method: 'put',
@@ -239,7 +246,6 @@ async function resetTaskStatusAll(){
             })
             const data = await response.json()
             console.log(data)
-            location.reload()
         } catch(err){
             console.log(err)
         }

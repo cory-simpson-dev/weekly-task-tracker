@@ -2,6 +2,8 @@
 
 Full-stack web application with user login for tracking daily completion of tasks in a week.
 
+[LIVE APP](https://weekly-task-tracker.herokuapp.com/ "Weekly Task Tracker")
+
 ## Features
 
 Within this weekly task tracker, you can create an account, create tasks you'd like to track, customize your account settings, save favorite tasks, and, of course, logout. 
@@ -15,6 +17,10 @@ This node.js application primarily utilizes ejs for templating, express for serv
 - improve UX/UI
 
 ## Changelog
+
+08/20/2022:
+
+- improved all status clear UX
 
 08/19/2022:
 
