@@ -1,4 +1,5 @@
 const path = require('path')
+const favicon = require('serve-favicon')
 const express = require('express')
 const expressLayouts = require('express-ejs-layouts')
 const mongoose = require('mongoose')
@@ -21,6 +22,9 @@ require('./config/passport')(passport)
 connectDB()
 
 const app = express()
+
+// favicon 
+app.use(favicon(__dirname + '/public/favicon/favicon.ico'))
 
 // body parser
 // helps get data from req.body
@@ -52,6 +56,7 @@ app.use(passport.initialize())
 app.use(passport.session())
 
 app.use(flash())
+
 
 // set global variable
 app.use(function (req, res, next) {
