@@ -68,3 +68,11 @@ i.selected {
 .tiny {
     padding: 10px;
 }
+
+.tiny:hover {
+    cursor: pointer;
+}
+
+#addTaskForm {
+    display: flex;
+}

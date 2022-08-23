@@ -18,6 +18,10 @@ This node.js application primarily utilizes ejs for templating, express for serv
 
 ## Changelog
 
+08/23/2022:
+
+- added hover styles
+
 08/22/2022:
 
 - added favicon
