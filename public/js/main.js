@@ -677,3 +677,18 @@ async function toggleSaturdayStatus(){
             console.log(err)
         }
 }
+
+let input = document.querySelector(".sub-inpt");
+let button = document.querySelector(".sub-btn");
+
+button.disabled = true; //setting button state to disabled
+
+input.addEventListener("change", stateHandle);
+
+function stateHandle() {
+    if (document.querySelector(".sub-inpt").value === "") {
+        button.disabled = true; //button remains disabled
+    } else {
+        button.disabled = false; //button is enabled
+    }
+}

@@ -18,6 +18,11 @@ This node.js application primarily utilizes ejs for templating, express for serv
 
 ## Changelog
 
+09/01/2022:
+
+- updated task submission (min char = 3, max = 20)
+- added task submission styles
+
 08/23/2022:
 
 - added hover styles

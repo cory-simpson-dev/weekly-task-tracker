@@ -98,11 +98,12 @@
         <div class="container">
             <div class="row">
                 <form action="/tasks/createTask" method='POST'>
-                    <div class="col s5">
-                        <input type="text" placeholder="Add new task" name='taskItem'>
+                    <div class="input-field col s5">
+                        <input id="input_text" minlength="3" maxlength="20" data-length="20" type="text" name='taskItem' class="sub-inpt">
+                        <label for="input_text">Add new task</label>
                     </div>
-                    <div class="col s3">
-                        <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+                    <div class="col s3 hide">
+                        <button class="btn waves-effect waves-light sub-btn" type="submit" name="action">Submit
                             <i class="small material-icons right">send</i>
                         </button>
                     </div>
