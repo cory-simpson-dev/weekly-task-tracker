@@ -81,6 +81,7 @@ Array.from(saturdayTaskStatus).forEach((el)=>{
 
 async function deleteTask(){
     const taskId = this.parentNode.id.slice(3)
+    document.getElementById(`row${taskId}`).remove()
     try{
         const response = await fetch('tasks/deleteTask', {
             method: 'delete',
@@ -89,7 +90,6 @@ async function deleteTask(){
                 'taskIdFromJSFile': taskId
             })
         })
-        document.getElementById(`row${taskId}`).remove()
         const data = await response.json()
         console.log(data)
     }catch(err){
@@ -178,7 +178,7 @@ async function createFavoriteTask(){
             newTaskNameDiv.classList.add('col','s5')
             //      create anchor
             let newTaskNameBtn = document.createElement('a')
-            newTaskNameBtn.classList.add('dropdown-trigger','btn')
+            newTaskNameBtn.classList.add('dropdown-trigger','btn','right')
             newTaskNameBtn.setAttribute('data-target',`dropdown${data.id}`)
             newTaskNameBtn.setAttribute('href','#')
             //          add inner text to anchor
@@ -292,7 +292,7 @@ async function createFavoriteTask(){
             newSaturdayStatusIcon.addEventListener('click', toggleSaturdayStatus)
             newTaskRow.appendChild(newSaturdayStatusDiv).appendChild(newSaturdayStatusIcon)
             // append row to #tasksContainer
-            document.getElementById('tasksContainer').appendChild(newTaskRow)
+            document.getElementById('tasksContainer').prepend(newTaskRow)
             // initialize materialize dropdown
             var elems = document.querySelectorAll('.dropdown-trigger');
             var instances = M.Dropdown.init(elems, {

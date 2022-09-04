@@ -12,11 +12,11 @@ Within this weekly task tracker, you can create an account, create tasks you'd l
 
 This node.js application primarily utilizes ejs for templating, express for server framework, mongoDB and mongoose for database storage, passport-local for accounts and authentication, bcrypt for password encryption, materialize as a css framework, and several others for other details (listed in package.json).
 
-## Current Objectives
-
-- improve task creation UX
-
 ## Changelog
+
+09/04/2022:
+
+- improved UX/UI
 
 09/03/2022:
 

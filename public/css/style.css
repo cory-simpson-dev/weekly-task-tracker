@@ -76,3 +76,10 @@ i.selected {
 #addTaskForm {
     display: flex;
 }
+
+.flex-end {
+    display: flex !important;
+    height: 40px;
+    align-items: flex-end !important;
+    justify-content: center;
+}
