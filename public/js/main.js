@@ -436,6 +436,9 @@ async function toggleSundayStatus(){
     const taskId = this.parentNode.id
         try{
             if (this.classList.contains('complete')) {
+                this.classList.remove('complete')
+                this.classList.add('incomplete')
+                this.innerText = `${userPreferredIncompleteIcon}`
                 const response = await fetch('tasks/markSundayIncomplete', {
                     method: 'put',
                     headers: {'Content-type': 'application/json'},
@@ -443,12 +446,13 @@ async function toggleSundayStatus(){
                         'taskIdFromJSFile': taskId
                     })
                 })
-                this.classList.remove('complete')
-                this.classList.add('incomplete')
-                this.innerText = `${userPreferredIncompleteIcon}`
                 const data = await response.json()
                 console.log(data)
             } else {
+                this.classList.remove('incomplete')
+                this.classList.add('complete')
+                // global variable declared in main.ejs
+                this.innerText = `${userPreferredCompleteIcon}`
                 const response = await fetch('tasks/markSundayComplete', {
                     method: 'put',
                     headers: {'Content-type': 'application/json'},
@@ -456,10 +460,6 @@ async function toggleSundayStatus(){
                         'taskIdFromJSFile': taskId
                     })
                 })
-                this.classList.remove('incomplete')
-                this.classList.add('complete')
-                // global variable declared in main.ejs
-                this.innerText = `${userPreferredCompleteIcon}`
                 const data = await response.json()
                 console.log(data)
             }
@@ -472,6 +472,9 @@ async function toggleMondayStatus(){
     const taskId = this.parentNode.id
         try{
             if (this.classList.contains('complete')) {
+                this.classList.remove('complete')
+                this.classList.add('incomplete')
+                this.innerText = `${userPreferredIncompleteIcon}`
                 const response = await fetch('tasks/markMondayIncomplete', {
                     method: 'put',
                     headers: {'Content-type': 'application/json'},
@@ -479,12 +482,12 @@ async function toggleMondayStatus(){
                         'taskIdFromJSFile': taskId
                     })
                 })
-                this.classList.remove('complete')
-                this.classList.add('incomplete')
-                this.innerText = `${userPreferredIncompleteIcon}`
                 const data = await response.json()
                 console.log(data)
             } else {
+                this.classList.remove('incomplete')
+                this.classList.add('complete')
+                this.innerText = `${userPreferredCompleteIcon}`
                 const response = await fetch('tasks/markMondayComplete', {
                     method: 'put',
                     headers: {'Content-type': 'application/json'},
@@ -492,9 +495,6 @@ async function toggleMondayStatus(){
                         'taskIdFromJSFile': taskId
                     })
                 })
-                this.classList.remove('incomplete')
-                this.classList.add('complete')
-                this.innerText = `${userPreferredCompleteIcon}`
                 const data = await response.json()
                 console.log(data)
             }
@@ -507,6 +507,9 @@ async function toggleTuesdayStatus(){
     const taskId = this.parentNode.id
         try{
             if (this.classList.contains('complete')) {
+                this.classList.remove('complete')
+                this.classList.add('incomplete')
+                this.innerText = `${userPreferredIncompleteIcon}`
                 const response = await fetch('tasks/markTuesdayIncomplete', {
                     method: 'put',
                     headers: {'Content-type': 'application/json'},
@@ -514,12 +517,12 @@ async function toggleTuesdayStatus(){
                         'taskIdFromJSFile': taskId
                     })
                 })
-                this.classList.remove('complete')
-                this.classList.add('incomplete')
-                this.innerText = `${userPreferredIncompleteIcon}`
                 const data = await response.json()
                 console.log(data)
             } else {
+                this.classList.remove('incomplete')
+                this.classList.add('complete')
+                this.innerText = `${userPreferredCompleteIcon}`
                 const response = await fetch('tasks/markTuesdayComplete', {
                     method: 'put',
                     headers: {'Content-type': 'application/json'},
@@ -527,9 +530,6 @@ async function toggleTuesdayStatus(){
                         'taskIdFromJSFile': taskId
                     })
                 })
-                this.classList.remove('incomplete')
-                this.classList.add('complete')
-                this.innerText = `${userPreferredCompleteIcon}`
                 const data = await response.json()
                 console.log(data)
             }
@@ -542,6 +542,9 @@ async function toggleWednesdayStatus(){
     const taskId = this.parentNode.id
         try{
             if (this.classList.contains('complete')) {
+                this.classList.remove('complete')
+                this.classList.add('incomplete')
+                this.innerText = `${userPreferredIncompleteIcon}`
                 const response = await fetch('tasks/markWednesdayIncomplete', {
                     method: 'put',
                     headers: {'Content-type': 'application/json'},
@@ -549,12 +552,12 @@ async function toggleWednesdayStatus(){
                         'taskIdFromJSFile': taskId
                     })
                 })
-                this.classList.remove('complete')
-                this.classList.add('incomplete')
-                this.innerText = `${userPreferredIncompleteIcon}`
                 const data = await response.json()
                 console.log(data)
             } else {
+                this.classList.remove('incomplete')
+                this.classList.add('complete')
+                this.innerText = `${userPreferredCompleteIcon}`
                 const response = await fetch('tasks/markWednesdayComplete', {
                     method: 'put',
                     headers: {'Content-type': 'application/json'},
@@ -562,9 +565,6 @@ async function toggleWednesdayStatus(){
                         'taskIdFromJSFile': taskId
                     })
                 })
-                this.classList.remove('incomplete')
-                this.classList.add('complete')
-                this.innerText = `${userPreferredCompleteIcon}`
                 const data = await response.json()
                 console.log(data)
             }
@@ -577,6 +577,9 @@ async function toggleThursdayStatus(){
     const taskId = this.parentNode.id
         try{
             if (this.classList.contains('complete')) {
+                this.classList.remove('complete')
+                this.classList.add('incomplete')
+                this.innerText = `${userPreferredIncompleteIcon}`
                 const response = await fetch('tasks/markThursdayIncomplete', {
                     method: 'put',
                     headers: {'Content-type': 'application/json'},
@@ -584,12 +587,12 @@ async function toggleThursdayStatus(){
                         'taskIdFromJSFile': taskId
                     })
                 })
-                this.classList.remove('complete')
-                this.classList.add('incomplete')
-                this.innerText = `${userPreferredIncompleteIcon}`
                 const data = await response.json()
                 console.log(data)
             } else {
+                this.classList.remove('incomplete')
+                this.classList.add('complete')
+                this.innerText = `${userPreferredCompleteIcon}`
                 const response = await fetch('tasks/markThursdayComplete', {
                     method: 'put',
                     headers: {'Content-type': 'application/json'},
@@ -597,9 +600,6 @@ async function toggleThursdayStatus(){
                         'taskIdFromJSFile': taskId
                     })
                 })
-                this.classList.remove('incomplete')
-                this.classList.add('complete')
-                this.innerText = `${userPreferredCompleteIcon}`
                 const data = await response.json()
                 console.log(data)
             }
@@ -612,6 +612,9 @@ async function toggleFridayStatus(){
     const taskId = this.parentNode.id
         try{
             if (this.classList.contains('complete')) {
+                this.classList.remove('complete')
+                this.classList.add('incomplete')
+                this.innerText = `${userPreferredIncompleteIcon}`
                 const response = await fetch('tasks/markFridayIncomplete', {
                     method: 'put',
                     headers: {'Content-type': 'application/json'},
@@ -619,12 +622,12 @@ async function toggleFridayStatus(){
                         'taskIdFromJSFile': taskId
                     })
                 })
-                this.classList.remove('complete')
-                this.classList.add('incomplete')
-                this.innerText = `${userPreferredIncompleteIcon}`
                 const data = await response.json()
                 console.log(data)
             } else {
+                this.classList.remove('incomplete')
+                this.classList.add('complete')
+                this.innerText = `${userPreferredCompleteIcon}`
                 const response = await fetch('tasks/markFridayComplete', {
                     method: 'put',
                     headers: {'Content-type': 'application/json'},
@@ -632,9 +635,6 @@ async function toggleFridayStatus(){
                         'taskIdFromJSFile': taskId
                     })
                 })
-                this.classList.remove('incomplete')
-                this.classList.add('complete')
-                this.innerText = `${userPreferredCompleteIcon}`
                 const data = await response.json()
                 console.log(data)
             }
@@ -647,6 +647,9 @@ async function toggleSaturdayStatus(){
     const taskId = this.parentNode.id
         try{
             if (this.classList.contains('complete')) {
+                this.classList.remove('complete')
+                this.classList.add('incomplete')
+                this.innerText = `${userPreferredIncompleteIcon}`
                 const response = await fetch('tasks/markSaturdayIncomplete', {
                     method: 'put',
                     headers: {'Content-type': 'application/json'},
@@ -654,12 +657,12 @@ async function toggleSaturdayStatus(){
                         'taskIdFromJSFile': taskId
                     })
                 })
-                this.classList.remove('complete')
-                this.classList.add('incomplete')
-                this.innerText = `${userPreferredIncompleteIcon}`
                 const data = await response.json()
                 console.log(data)
             } else {
+                this.classList.remove('incomplete')
+                this.classList.add('complete')
+                this.innerText = `${userPreferredCompleteIcon}`
                 const response = await fetch('tasks/markSaturdayComplete', {
                     method: 'put',
                     headers: {'Content-type': 'application/json'},
@@ -667,9 +670,6 @@ async function toggleSaturdayStatus(){
                         'taskIdFromJSFile': taskId
                     })
                 })
-                this.classList.remove('incomplete')
-                this.classList.add('complete')
-                this.innerText = `${userPreferredCompleteIcon}`
                 const data = await response.json()
                 console.log(data)
             }

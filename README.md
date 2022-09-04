@@ -18,6 +18,10 @@ This node.js application primarily utilizes ejs for templating, express for serv
 
 ## Changelog
 
+09/03/2022:
+
+- improved task status UX
+
 09/01/2022:
 
 - updated task submission (min char = 3, max = 20)
